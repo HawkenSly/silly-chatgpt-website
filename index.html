@@ -27,8 +27,6 @@
       }
 
       button {
-        position: relative; /* Add position relative to button */
-        z-index: 1; /* Add z-index to button to ensure it's on top of the animation */
         margin-top: 1rem;
         padding: 1rem 2rem;
         border: none;
@@ -50,7 +48,7 @@
         animation-duration: 1s;
         animation-timing-function: ease-in-out;
         animation-fill-mode: forwards; /* Ensure the animation retains its final state */
-        opacity: 1; /* Set initial opacity to 1 */
+        opacity: 0; /* Set initial opacity to 0 */
       }
 
       .animate-out {
@@ -96,10 +94,12 @@
       const animation = document.querySelector('.animation');
 
       animateBtn.addEventListener('click', () => {
+        animation.style.opacity = 1; // Set the opacity to 1 when the button is pressed
         animation.classList.add('animate-out');
       });
 
       animation.addEventListener('animationend', () => {
+        animation.style.opacity = 0; // Set the opacity back to 0 when the animation ends
         animation.classList.remove('animate-out');
       });
     </script>
