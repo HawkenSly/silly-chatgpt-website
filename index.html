@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fancy Website</title>
+    <style>
+      /* Add your CSS styles here */
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      main {
+        position: relative; /* Add position relative to main */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+      }
+
+      button {
+        position: relative; /* Add position relative to button */
+        z-index: 1; /* Add z-index to button to ensure it's on top of the animation */
+        margin-top: 1rem;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 5px;
+        background-color: #333;
+        color: #fff;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+
+      .animation {
+        position: absolute; /* Position the animation absolutely */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards; /* Ensure the animation retains its final state */
+        opacity: 1; /* Set initial opacity to 1 */
+      }
+
+      .animate-out {
+        animation-name: animate-out;
+      }
+
+      @keyframes animate-out {
+        0% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(2);
+          opacity: 0;
+        }
+      }
+
+      .image-container {
+        margin-top: 2rem;
+        max-width: 100%;
+      }
+
+      .image-container img {
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Fancy Website</h1>
+    </header>
+    <main>
+      <button id="animate-btn">Animate</button>
+      <div class="animation"></div>
+      <div class="image-container">
+        <img src="https://via.placeholder.com/800x400.png?text=Placeholder+Image" alt="A placeholder image" />
+      </div>
+    </main>
+    <script>
+      // Add your JavaScript code here
+      const animateBtn = document.getElementById('animate-btn');
+      const animation = document.querySelector('.animation');
+
+      animateBtn.addEventListener('click', () => {
+        animation.classList.add('animate-out');
+      });
+
+      animation.addEventListener('animationend', () => {
+        animation.classList.remove('animate-out');
+      });
+    </script>
+  </body>
+</html>
